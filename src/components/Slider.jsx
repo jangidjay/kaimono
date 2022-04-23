@@ -26,12 +26,15 @@ const Arrow = styled.div`
   right: ${(props) => props.direction === "right" && "10px"};
   margin: auto;
   opacity: 0.5;
+  z-index: 2;
 `;
 
 const Wrapper = styled.div`
   height: 100%;
   display: flex;
-  transform: translate(0);
+  transition: all 1.5s ease;
+  transform: translateX(${(props) => props.slideIndex * -100}vw);
+  /* transform: translateX(-200vw); */
 `;
 
 const Slide = styled.div`
@@ -39,7 +42,6 @@ const Slide = styled.div`
   height: 100vh;
   display: flex;
   align-items: center;
-
   background-color: #${(props) => props.bg};
 `;
 
@@ -85,12 +87,12 @@ const Slider = () => {
 
   return (
     <Container>
-      <Arrow direction="left" onCLick={() => handleClick("left")}>
+      <Arrow direction="left" onClick={() => handleClick("left")}>
         <ArrowLeftOutlined />
       </Arrow>
-      <Wrapper slideIndex>
+      <Wrapper slideIndex={slideIndex}>
         {sliderItems.map((item) => (
-          <Slide bg={item.bg}>
+          <Slide bg={item.bg} key={item.id}>
             <ImgContainer>
               <Image src={item.img} />
             </ImgContainer>
@@ -102,7 +104,7 @@ const Slider = () => {
           </Slide>
         ))}
       </Wrapper>
-      <Arrow direction="right" onCLick={() => handleClick("left")}>
+      <Arrow direction="right" onClick={() => handleClick("right")}>
         <ArrowRightOutlined />
       </Arrow>
     </Container>
