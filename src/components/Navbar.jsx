@@ -1,4 +1,5 @@
 import { Badge } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import { Search, ShoppingCartOutlined } from "@material-ui/icons";
 import React from "react";
 import styled from "styled-components";
@@ -23,7 +24,7 @@ const Left = styled.div`
 
 const Logo = styled.h1`
   font-weight: bold;
-  cursor: pointer;
+  width: 170px;
   ${mobile({ fontSize: "24px" })}
 `;
 
@@ -84,23 +85,64 @@ const Navbar = () => {
     <Container>
       <Wrapper>
         <Left>
-          <Logo>KAIMONO.</Logo>
+          <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+            <Logo style={{ cursor: "pointer" }}>KAIMONO.</Logo>
+          </Link>
         </Left>
         <Center>
-          <MenuItem>HOME</MenuItem>
-          <MenuItem>COLLECTIONS</MenuItem>
-          <MenuItem>ABOUT</MenuItem>
+          <MenuItem>
+            <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+              HOME
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link
+              to="/collections"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              COLLECTIONS
+            </Link>
+          </MenuItem>
+          <MenuItem>
+            <Link
+              to="/about"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              ABOUT
+            </Link>
+          </MenuItem>
         </Center>
         <Right>
           <SearchContainer>
             <Input />
-            <Search style={{ color: "gray" }} />
+            <Link
+              to="/search"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <Search style={{ color: "gray", cursor: "pointer" }} />
+            </Link>
           </SearchContainer>
-          <SignIn>SIGN IN</SignIn>
-          <Badge badgeContent={4} color="primary">
-            <ShoppingCartOutlined />
+          <SignIn>
+            <Link
+              to="/signin"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              SIGN IN
+            </Link>
+          </SignIn>
+          <Badge badgeContent={1} color="primary">
+            <Link
+              to="/cart"
+              style={{ color: "inherit", textDecoration: "none" }}
+            >
+              <ShoppingCartOutlined style={{ cursor: "pointer" }} />
+            </Link>
           </Badge>
-          <Language>EN</Language>
+          <Language>
+            <Link to="/" style={{ color: "inherit", textDecoration: "none" }}>
+              EN
+            </Link>
+          </Language>
         </Right>
       </Wrapper>
     </Container>

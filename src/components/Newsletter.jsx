@@ -47,6 +47,7 @@ const Button = styled.button`
   background-color: teal;
   color: white;
   box-shadow: rgba(0, 0, 0, 0.7) 0px 3px 8px;
+  cursor: pointer;
 `;
 
 const Notice = styled.p`
